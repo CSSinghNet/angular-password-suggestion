@@ -1,0 +1,15 @@
+p {
+  font-family: Lato;
+}
+
+input.ng-dirty.ng-invalid {
+  color: red;
+}
+
+input.ng-valid {
+  color: green;
+}
+
+.invalid-feedback {
+        display: block;
+    }

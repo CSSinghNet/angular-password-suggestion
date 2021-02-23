@@ -1,0 +1,85 @@
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Angular 11 Password Suggestion</h3>
+                <form [formGroup]="createPasswordForm">
+                 <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': createPasswordFormValidation.password.errors }" />
+                        <div class="invalid-feedback">
+                            <div *ngIf="createPasswordFormValidation.password.errors">Password is required.</div>
+
+                        <div *ngIf="createPasswordFormValidation.password?.hasError('hasSpecialCharacter')"
+                            [ngClass]="createPasswordFormValidation.password.hasError('hasSpecialCharacter')  ? 'text-danger' : 'text-success'">
+                            At least 1 special character
+                        </div>
+                        <div *ngIf="!createPasswordFormValidation.password?.hasError('hasSpecialCharacter') || createPasswordFormValidation.password.errors?.required"
+                            [ngClass]="createPasswordFormValidation.password.hasError('hasSpecialCharacter') || createPasswordFormValidation.password.errors?.required  ? 'text-danger' : 'text-success'">
+                            At least 1 special character
+                        </div>
+
+                        <div *ngIf="createPasswordFormValidation.password?.hasError('minlength')"
+                            [ngClass]="createPasswordFormValidation.password.hasError('minlength')  ? 'text-danger' : 'text-success'">
+                            At least 8 characters
+                        </div>
+                        <div *ngIf="!createPasswordFormValidation.password?.hasError('minlength') || createPasswordFormValidation.password.errors?.required"
+                            [ngClass]="createPasswordFormValidation.password.hasError('minlength') || createPasswordFormValidation.password.errors?.required ? 'text-danger' : 'text-success'">
+                            At least 8 characters
+                        </div>
+
+                        <div *ngIf="createPasswordFormValidation.password?.hasError('hasCapitalCase')"
+                            [ngClass]="createPasswordFormValidation.password.hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                            At least 1 in uppercase
+                        </div>
+                        <div *ngIf="!createPasswordFormValidation.password?.hasError('hasCapitalCase') || createPasswordFormValidation.password.errors?.required"
+                            [ngClass]="createPasswordFormValidation.password.hasError('hasCapitalCase') || createPasswordFormValidation.password.errors?.required ? 'text-danger' : 'text-success'">
+                            At least 1 in uppercase
+                        </div>
+
+                        <div *ngIf="createPasswordFormValidation.password?.hasError('hasSmallCase')"
+                            [ngClass]="createPasswordFormValidation.password.hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                            At least 1 lowercase
+                        </div>
+                        <div *ngIf="!createPasswordFormValidation.password?.hasError('hasSmallCase') || createPasswordFormValidation.password.errors?.required"
+                            [ngClass]="createPasswordFormValidation.password.hasError('hasSmallCase') || createPasswordFormValidation.password.errors?.required ? 'text-danger' : 'text-success'">
+                            At least 1 lowercase
+                        </div>
+
+                        <div *ngIf="createPasswordFormValidation.password?.hasError('hasNumber')"
+                            [ngClass]="createPasswordFormValidation.password.hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                            At least 1 number
+                        </div>
+                        <div *ngIf="!createPasswordFormValidation.password?.hasError('hasNumber') || createPasswordFormValidation.password.errors?.required"
+                            [ngClass]="createPasswordFormValidation.password.hasError('hasNumber') || createPasswordFormValidation.password.errors?.required  ? 'text-danger' : 'text-success'">
+                            At least 1 number
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid':  createPasswordFormValidation.confirmPassword.errors.dirty }" />
+                        <div  class="invalid-feedback">
+                           <span *ngIf="createPasswordFormValidation.confirmPassword.errors?.required">
+                            Confirm Password is required
+                        </span>
+                        <span *ngIf="createPasswordFormValidation.confirmPassword.errors?.mustMatch">
+                            Confirm Password should match
+                        </span>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- credits -->
+<div class="text-center">
+  <p>
+    <a target="_top">Angular 11 - Password Suggestion</a>
+    </p>
+  
+</div>
